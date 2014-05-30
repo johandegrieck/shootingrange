@@ -1,0 +1,192 @@
+jQuery(function($){
+	var socket = io.connect();
+	var $body = $('body');
+	var $initserver = $('#initserver');
+	var $nameEntry = $('#name-entry');
+	var $nickForm = $('#frmRegister');
+	var $nickError = $('#errNickname');
+	var $initForm = $('#frmInitserver');
+	var $rbtGameId = $('#rbtGameId');
+	var $txtNickName = $('#txtNickname');
+	//var $players= $('#panePlayers');
+	var $controllerPane = $('#paneController');
+	var $shootingPane=$('#paneShootingrange');
+	var $confirmButton =$('#btnConfirm');
+
+	var $loader = $('#loader');
+	var $isServer = false;
+	var $rnd = 1;
+	var $nickname="";
+	var $playerId=0;
+
+	function showBulletHole(n,x,y){
+		$bullet = $("<img src='img/bullet-1.png'>");
+		$bullet.css("position","absolute");
+		$bullet.css("left",x);
+		$bullet.css("top",y);
+		$shootingPane.append($bullet);
+
+	}
+
+	function showScore(player){
+		//console.log("showScore() player.id: "+player.id+" player score: "+player.score);
+		$('.playerstat-points p').eq(player.id).text(player.score);
+	}
+
+	function showPlayer(player,n){
+		//console.log("showPlayer "+ player.nickname +" "+ n);
+		$('.playerstat').eq(n).toggleClass("act");
+		$('.playerstat-name').eq(n).text(player.nickname);
+		$('.playerstat-name').eq(n).toggleClass(player.color);
+		showScore(player,n);
+
+
+	}
+
+
+	function showPlayers(players){
+		//var j=0;
+		for(var i=0;i<players.length;i++){
+			//console.log('showPlayers() - PLAYER: ',players[i].nickname);
+			//j++;
+			showPlayer(players[i], i);
+		}
+
+	}
+
+	function initShootingRange(amountX, amountY){
+		for(var i=0;i<amountY;i++){
+			for(var j=0;j<amountX;j++){
+				$shootingPane.append("<div class='target-"+j+"-"+i+"'></div>");
+			}
+		}			
+
+	}
+
+	function showDialog(){
+		$confirmButton.show();
+		//show confirm buttom. When clicked, the server will receive a signal			
+		$confirmButton.click(function(){
+	        console.log('Pushed tha button');
+			socket.emit('player approved',$nickname);
+			$(this).hide();
+		});			
+	}
+
+	function initRound(game, gamers){
+		showPlayers(gamers);
+		initShootingRange(game.gameTargetsX,game.TargetsY);
+
+
+
+	}
+	
+	/******** FIRE AT WILL *************/
+
+	/*$controllerPane.on('touchstart', function(e) {
+	  var posX = e.originalEvent.touches[0].pageX;
+	  var posY = e.originalEvent.touches[0].pageY;
+	  socket.emit('shot',{id:$playerId,posX:posX,posY:posY}, function(data){
+	  	console.log("Shot data:"+data);
+
+	  });
+
+	});*/
+
+	$controllerPane.click(function(e) {
+		var offset = $(this).offset();
+	    //alert(e.clientX - offset.left);
+	    //alert(e.clientY - offset.top);
+		
+
+		var posX = e.clientX - offset.left;
+		var posY = e.clientY - offset.top;
+		socket.emit('shot',{id:$playerId,posX:posX,posY:posY}, function(data){
+			console.log("Shot data:"+data);
+
+		});
+
+
+	});
+	/**********END FIRE AT WILL *****************/
+
+	/**
+	/*$controllerPane.click(function(){
+	  var xPos = 50;
+	  socket.emit('shot',{nick:$nickname,pos:xPos}, function(data){
+	  	console.log("Shot data:"+data);
+	  });
+
+	});*/
+
+	$nickForm.submit(function(e){
+		e.preventDefault();
+		$nickname = $txtNickName.val();
+		socket.emit('send nick',$nickname,function(data,nicknames){
+			if(data){
+				console.log('call back send nick: '+nicknames);
+				//set the PlayerId 
+				$playerId= nicknames.length -1;
+				$nameEntry.hide();
+				$initserver.hide();
+				$controllerPane.show();
+				
+
+
+			}else{
+				$nickError.html('Nickname already taken. Try another one!');
+			}
+		});
+	});
+	$initForm.submit(function(e){
+
+		e.preventDefault();
+		//Send request for a new game
+		var formData = $initForm.serializeArray();
+		socket.emit('ngrequest',formData);
+		$nameEntry.hide();
+		$isServer = true;
+		$initserver.hide();
+
+	});
+
+
+	socket.on('requestready',function(data){
+		
+		
+		if(!$isServer){
+			//show confirmation dialog to all players
+			showDialog();
+		}else{
+			//show loader on server interface
+			$loader.toggle();
+		}
+		
+
+	});
+	socket.on('start',function(game,gamers){
+		//console.log('requestready game - gameId: '+game.gameId + ' - gameSeconds: '+game.gameSeconds );
+		if($isServer){
+			$loader.toggle();
+			alert('the game has begun!');
+			$shootingPane.addClass('act');
+			//console.log("socket on start - game:" + game.gameId +"gamers:" + gamers[0].nickname);
+			initRound(game,gamers);
+		}
+	});
+	socket.on('showshot',function(data){
+		
+		if($isServer){
+			//console.log("showhot data.id" +data.id+"data.posX:"+data.posX+" data.posY:"+data.posY);
+			showBulletHole(data.id,data.posX,data.posY);
+
+		}
+
+
+	});
+});
+
+
+
+
+	

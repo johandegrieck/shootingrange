@@ -1,0 +1,438 @@
+@import 'mx-keyframes';
+@import 'fadeshot';
+$boxes: 10;
+/*red*/
+$color0: #D55E5E;
+/*blue*/
+$color1: #55A9C3;
+/*green*/
+$color2: #A0E980;
+/*yellow*/
+$color3: #D1CC51;
+
+body{
+	font-family:Helvetica,Arial;
+	overflow: hidden;	
+}
+.form.form-nick,.form.form-initserver{
+	border: 2px solid #CCC;
+	background-color: #EFEFEF;
+}
+.form.form-initserver{
+}
+
+.pane.pane-shootingrange{
+	width: 100%;
+	height: 100%;
+	display:none;
+	background:url(../img/bg.jpg) 50% 50% #000 no-repeat;
+	position: relative;
+}
+.pane.pane-shootingrange.act{
+	display:block;
+}
+
+.pane.pane-players{
+	width:20%;
+	float:left;
+	display:inline;
+	height:100%;
+	display:none;
+	padding:10px;
+
+	background-color:#00ff00;
+	border: solid 2px #aaa;
+}
+.errNickname{
+	color:red;
+	background-color:#66FFFF;
+	border: solid 1px #ff0000;
+}
+
+.loading{
+	width:50%;
+	text-align: center;
+	margin: auto 40px;
+	background-color:#884444;
+	display:none;
+}
+.target{
+	//width and height are set with javascript
+	position:absolute;
+	background-color:#000;
+	opacity: 1;
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+	overflow:hidden;
+	border-radius:50px;
+	box-shadow: 0px 0px 10px #222;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transition: 0.6s;
+	-webkit-transform-style: preserve-3d;
+	-moz-transition: 0.6s;
+	-moz-transform-style: preserve-3d;
+	-o-transition: 0.6s;
+	-o-transform-style: preserve-3d;
+	-ms-transition: 0.6s;
+	-ms-transform-style: preserve-3d;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	-webkit-transform: rotateY(-180deg);
+	-moz-transform: rotateY(-180deg);
+	-o-transform: rotateY(-180deg);
+	-ms-transform: rotateY(-180deg);
+
+}
+.target.act{
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	-o-transform: rotateY(0deg);
+	-ms-transform: rotateY(0deg);
+
+}
+.target.touche{
+	-webkit-transform: rotateX(90deg); /* Chrome, Safari, Opera */
+	transform: rotateX(90deg);
+	animation: targetMotion linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: targetMotion linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+
+  	//backface-visibility: hidden;
+  	//-webkit-backface-visibility: hidden;
+}
+.targets-container{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:1;
+	//-webkit-perspective:20000px;
+	//perspective:20000px;
+
+}
+/* Player stats ui component*/
+.playerstat-container{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:0;
+}
+.playerstat-container .playerstat:nth-child(1) {
+	top:0;
+	left:0;
+}
+.playerstat-container .playerstat:nth-child(2) {
+	top:0;
+	right:0;
+}
+.playerstat-container .playerstat:nth-child(3) {
+	bottom:0;
+	right:0;
+}
+.playerstat-container .playerstat:nth-child(4) {
+	bottom:0;
+	left:0;
+}
+.playerstat{
+	width:300px;
+	/*use same height as playerstat-gunchamber-shadow AND playerstat-gunchamber barrel-n*/
+	height:150px;
+	display:none;
+	position:absolute;
+}
+
+.playerstat.act{
+	display:inline-block;
+	//z-index: 1;
+}
+
+.playerstat .playerstat-name{	
+	position:absolute;
+	top: 20px;
+	left: 130px;
+	font-size: 22px;
+	font-weight:bold;
+	text-shadow: #000 0px 0px 5px;
+}
+.playerstat .playerstat-name.player-color-1{
+	color:$color0;
+}
+.playerstat .playerstat-name.player-color-2{	
+	color:$color1;
+}
+.playerstat .playerstat-name.player-color-3{	
+	color:$color2;
+}
+.playerstat .playerstat-name.player-color-4{
+	color:$color3;
+}
+.playerstat-statcont{
+	position:relative;
+	width:100%;
+	height:100%;
+	font-family:Helvetica;
+	font-weight: bold;
+	font-size:15px;
+}
+.playerstat-points{
+	position:absolute;
+	top:20px;
+	left:100px;
+	top: 48px;
+	width: 180px;
+	height: 50px;
+	font-weight:16px;
+	padding:10px;
+	background-color:rgba(36, 36, 36, 0.28);
+	border-radius: 15px;
+	border:2px solid #888;
+}
+.playerstat-points p{
+	text-shadow: 0px 0px 5px black;
+	color: #ccc;
+	margin-top: 0;
+	font-size: 30px;
+	text-align:right;
+}
+.playerstat-points.even{
+	left:0;	
+}
+.playerstat-points.even p{
+	text-align:left;
+}
+.playerstat-points-bg{
+	width:130px;
+	position:absolute;
+	top:20px;
+	left:20px;
+}
+.playerstat-name{
+	position:absolute;
+	top:0%;
+	left:20px;
+	width:100px;
+	font-weight:10px;
+}
+.playerstat-name.even{
+	top: 20px;
+	font-size: 22px;
+	left: 5px;
+}
+.playerstat-gunchamber{
+	position:absolute;
+	left:0%;
+	width:150px;
+	height:150px;
+}
+
+
+
+.playerstat-gunchamber-shadow{
+	position:absolute;
+	width:150px;
+	height:150px;
+	background:url(../img/barrel-bg.png) 50% 50% no-repeat;
+}
+.playerstat-gunchamber.even,.playerstat-gunchamber-shadow.even{
+	left: 150px;
+}
+.playerstat-gunchamber.barrel-0{
+	background:url(../img/barrel0.png) 50% 50% no-repeat;
+	animation: animationFrames linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: animationFrames linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+}
+.playerstat-gunchamber.barrel-1{
+	background:url(../img/barrel1.png) 50% 50% no-repeat;
+	animation: barrelMotionOne linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: barrelMotionOne linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+}
+.playerstat-gunchamber.barrel-2{
+	background:url(../img/barrel2.png) 50% 50% no-repeat;
+	animation: barrelMotionTwo linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: barrelMotionTwo linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+}
+.playerstat-gunchamber.barrel-3{
+	background:url(../img/barrel3.png) 50% 50% no-repeat;
+	animation: barrelMotionThree linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: barrelMotionThree linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+}
+.playerstat-gunchamber.barrel-4{
+	background:url(../img/barrel4.png) 50% 50% no-repeat;
+	animation: barrelMotionFour linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: barrelMotionFour linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+}
+.playerstat-gunchamber.barrel-5{
+	background:url(../img/barrel5.png) 50% 50% no-repeat;
+	animation: barrelMotionFive linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: barrelMotionFive linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+}
+.playerstat-gunchamber.barrel-6{
+	background:url(../img/barrel6.png) 50% 50% no-repeat;
+	animation: barrelMotionSix linear 0.1s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: barrelMotionSix linear 0.1s;
+  	-webkit-animation-iteration-count: 1;
+}
+
+.shot{
+	background:url(../img/bullets_coloured.png);
+	background-repeat:no-repeat;
+	animation: fadeshot linear 3s;
+  	animation-iteration-count: 1;
+  	-webkit-animation: fadeshot linear 3s;
+  	-webkit-animation-iteration-count: 1;
+	width: 40px;
+	height: 40px;
+	margin-left: -20px;
+	margin-top: -20px;
+	opacity: 0;
+}
+.shot.shot-0-0{
+	background-position:0 0px;
+}
+.shot.shot-0-1{
+	background-position:0 -40px;
+}
+.shot.shot-0-2{
+	background-position:0 -80px;
+}
+.shot.shot-1-0{
+	background-position:-40px 0px;
+}
+.shot.shot-1-1{
+	background-position:-40px -40px;
+}
+.shot.shot-1-2{
+	background-position:-40px -80px;
+}
+.shot.shot-2-0{
+	background-position:-80px 0px;
+}
+.shot.shot-2-1{
+	background-position:-80px -40px;
+}
+.shot.shot-2-2{
+	background-position:-80px -80px;
+}
+.shot.shot-3-0{
+	background-position:-120px 0px;
+}
+.shot.shot-3-1{
+	background-position:-120px -40px;
+}
+.shot.shot-3-2{
+	background-position:-120px -80px;
+}
+
+
+@include fadeshot;
+@include keyframes(barrelMotionOne);
+@include keyframes(barrelMotionTwo);
+@include keyframes(barrelMotionThree);
+@include keyframes(barrelMotionFour);
+@include keyframes(barrelMotionFive);
+@include keyframes(barrelMotionSix);
+
+
+#cont-expl-0,#cont-expl-1,#cont-expl-2,#cont-expl-3{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+
+  margin-top:-50px;
+  margin-left:-50px;
+}
+#expl{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: auto;
+}
+
+div.box{
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  //-webkit-filter: blur(1px);
+  position: absolute;
+  -webkit-opacity: 0;
+}
+div.box.box-0{
+	background-color:$color0;
+}
+div.box.box-1{
+	background-color:$color1;
+}
+div.box.box-2{
+	background-color:$color2;
+}
+div.box.box-3{
+	background-color:$color3;
+}
+
+
+/* splattering particles */
+@for $i from 1 through $boxes { 
+	div.box{
+	  &:nth-child(#{$i}){
+	    left: $i * 10px;
+	    -webkit-animation-name: anim-#{$i};
+	    -webkit-animation-duration: 0.5s;	    
+	    //-webkit-animation-iteration-count: infinite;
+	    //-webkit-animation-direction: alternate;
+	    -webkit-animation-timing-function: ease-out;
+	    //background: hsla(10 * $i, 100%, 50%, 1);
+	  }
+	}
+	@-webkit-keyframes anim-#{$i} {
+		0% {
+		  top: 50%;
+		  left: 50%;
+		  opacity: 1.0;
+		}
+		100%{
+		  top: random(100)+px;
+		  left: random(100)+px;
+		  opacity: 0;
+		}
+	}
+	
+}
+
+/* target animation */
+/* since the amount of targets can vary I only use one animation. To restart it, i remove and append the target element when hit */
+/* problem described by Chris Coyier http://css-tricks.com/restart-css-animation/ */
+
+@-webkit-keyframes targetMotion{
+  0% {
+    //opacity:0;
+    //transform:  rotate(-60deg) scaleX(1) scaleY(1) ;
+    -webkit-transform: rotateX(0deg); /* Chrome, Safari, Opera */
+	transform: rotateX(0deg);
+  }
+  100% {
+    //opacity:1;
+    //transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+    -webkit-transform: rotateX(90deg); /* Chrome, Safari, Opera */
+	transform: rotateX(90deg);
+  }
+}

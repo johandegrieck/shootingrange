@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Johan's Shooting Range</title>
+    <meta name="description" content="blast away">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <!--link rel="stylesheet" href="stylesheets/main.css"-->
+	<link rel="stylesheet" href="stylesheets/client.css"/>	
+	<link rel="stylesheet" href="stylesheets/foundation.css" />
+	<link rel="stylesheet" href="stylesheets/screen.css" media="screen, projection"/>
+
+</head>
+<body>	
+	
+	<div class="row">
+      <div class="large-12 columns">
+		<div id="name-entry" class="form form-nick">
+			<form id="frmRegister">
+				<label for="txtNickname">Nickname</label>
+				<input id="txtNickname" type="text"></input>
+				<label id="errNickname"></label>
+				<button type="submit" class="medium button green">Let's go!</button>
+			</form>
+		</div>
+	  </div>
+	</div>
+	<div class="container-confirm-buttom" id='btnConfirm'>
+		<div class='confirm-button'>IK ZEN KLEIR OM TE KNALLE ! </div>
+	</div>
+	<div id="paneController" class="pane pane-ctrl">
+		<div id="cursor" class="cursor"></div>
+	</div>
+	<script src="js/vendor/jquery-1.10.1.min.js"></script>
+	<script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+	<script src="socket.io/socket.io.js"></script>	
+	<script src="js/game-client.js"></script>
+    
+	
+</body>
+</html>

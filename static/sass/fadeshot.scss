@@ -1,0 +1,66 @@
+//keyframes generator for fading shot
+//Author: Johan Degrieck
+//URL: www.johandegrieck.be
+//added vendor prefixes for Opera, Webkit, Safari, IE
+
+@mixin fadeshot{
+  @keyframes fadeshot{
+    0% {
+      opacity:1;
+    }
+    90% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+
+  @-moz-keyframes fadeshot{
+    0% {
+      opacity:1;
+    }
+    90% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+
+  @-webkit-keyframes fadeshot{
+    0% {
+      opacity:1;
+    }
+    90% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+
+  @-o-keyframes fadeshot{
+    0% {
+      opacity:1;
+    }
+    90% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+
+  @-ms-keyframes fadeshot{
+    0% {
+      opacity:1;
+    }
+    90% {
+      opacity:1;
+    }
+    100% {
+      opacity:0;
+    }
+  }
+}

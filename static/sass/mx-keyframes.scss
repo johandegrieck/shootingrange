@@ -1,0 +1,68 @@
+//keyframes generator v1.0
+//Author: Johan Degrieck
+//params: animationName - string
+
+//added vendor prefixes for Opera, Webkit, Safari, IE
+//feel free to steal my code :)
+
+
+@mixin keyframes($animationName){
+
+
+@keyframes $animationName{
+  0% {
+    opacity:1;
+    transform:  rotate(-60deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    opacity:1;
+    transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-moz-keyframes $animationName{
+  0% {
+    opacity:1;
+    -moz-transform:  rotate(-60deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    opacity:1;
+    -moz-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-webkit-keyframes $animationName {
+  0% {
+    opacity:1;
+    -webkit-transform:  rotate(-60deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    opacity:1;
+    -webkit-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-o-keyframes $animationName {
+  0% {
+    opacity:1;
+    -o-transform:  rotate(-60deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    opacity:1;
+    -o-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+@-ms-keyframes $animationName {
+  0% {
+    opacity:1;
+    -ms-transform:  rotate(-60deg) scaleX(1) scaleY(1) ;
+  }
+  100% {
+    opacity:1;
+    -ms-transform:  rotate(0deg) scaleX(1) scaleY(1) ;
+  }
+}
+
+
+}

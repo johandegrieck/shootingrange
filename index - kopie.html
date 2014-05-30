@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>John's Shooting range</title>
+
+</head>
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1">
+
+    <link rel="stylesheet" href="stylesheets/normalize.min.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+	<link rel="stylesheet" href="stylesheets/custom.css"/>
+
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+	<div class='confirm-button' id='btnConfirm'>I'm ready for Rock 'n Roll</div>
+	<div id="name-entry" class="form form-nick">
+		<form id="frmRegister">
+			<label for="txtNickname">Nickname</label>
+			<input id="txtNickname" type="text"></input>
+			<label id="errNickname"></label>			
+			<input type="submit" value="Let's go"></input>
+		</form>
+	</div>
+	<div id="initserver"class="form form-initserver">
+		<form id="frmInitserver">
+			<input type="radio" name="gameId" class="serv-game-id" checked value="1">1. shootout<br>
+			Play for <input type="text" name="gameSeconds" class="serv-game-secs" value="60" > seconds<br>
+			Amount of targets X<input type="text" name="gameTargetsX" class="serv-game-targetsX" value="9" >  <br>
+			Amount of targets Y<input type="text" name="gameTargetsY" class="serv-game-targetsY" value="5" >  <br>
+			<input type="submit" value="start server"></input>
+		</form>
+	</div>
+	
+	<div id="loader" class="loading">Waiting for all player... Stay steady!</div>
+	<div id="paneController" class="pane pane-ctrl"></div>
+	<div id="paneShootingrange" class="pane pane-shootingrange">
+		<div class="playerstat-container">
+			<div class="playerstat">
+				<div class="playerstat-statcont">
+					<div class="playerstat-name"></div>
+					<div class="playerstat-points"><p></p></div>
+					<div class="playerstat-points-bg"></div>
+					<div class="playerstat-gunchamber-shadow"></div>
+					<div class="playerstat-gunchamber barrel-0"></div>
+				</div>
+			</div>
+			<!-- end .playerstat -->
+			<div class="playerstat">
+				<div class="playerstat-statcont">
+					<div class="playerstat-name even"></div>
+					<div class="playerstat-points even"><p></p></div>
+					<div class="playerstat-points-bg even"></div>
+					<div class="playerstat-gunchamber-shadow even"></div>
+					<div class="playerstat-gunchamber barrel-0 even"></div>
+				</div>
+			</div>
+			<!-- end .playerstat -->
+			<div class="playerstat">
+				<div class="playerstat-statcont">
+					<div class="playerstat-name even"></div>
+					<div class="playerstat-points even"><p></p></div>
+					<div class="playerstat-points-bg even"></div>
+					<div class="playerstat-gunchamber-shadow even"></div>
+					<div class="playerstat-gunchamber barrel-0 even"></div>
+				</div>
+			</div>
+			<!-- end .playerstat -->
+			<div class="playerstat">
+				<div class="playerstat-statcont">
+					<div class="playerstat-name"></div>
+					<div class="playerstat-points"><p></p></div>
+					<div class="playerstat-points-bg"></div>
+					<div class="playerstat-gunchamber-shadow"></div>
+					<div class="playerstat-gunchamber barrel-0"></div>
+				</div>
+			</div>
+			<!-- end .playerstat -->
+		</div>
+	</div>
+	
+
+	<script src="js/vendor/jquery-1.10.1.min.js"></script>
+	<script src="socket.io/socket.io.js"></script>
+	<script src="js/game.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,127 @@
+/* line 9, ../sass/client.scss */
+body {
+  font-family: Verdana;
+  overflow: hidden;
+}
+
+/* line 13, ../sass/client.scss */
+.form.form-nick, .form.form-initserver {
+  border: 2px solid #CCC;
+  background-color: #EFEFEF;
+}
+
+/* line 20, ../sass/client.scss */
+.pane.pane-ctrl {
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: #000;
+  display: none;
+}
+
+/* line 27, ../sass/client.scss */
+.pane.pane-ctrl.act {
+  display: block;
+}
+
+/* line 31, ../sass/client.scss */
+.errNickname {
+  color: red;
+  background-color: #66FFFF;
+  border: solid 1px #ff0000;
+}
+
+/* line 36, ../sass/client.scss */
+.container-confirm-buttom {
+  background-color: black;
+  height: 100%;
+  display: none;
+}
+
+/* line 41, ../sass/client.scss */
+.container-confirm-buttom.clicked .confirm-button {
+  background: #db36a4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #db36a4 0%, #c146a1 50%, #a80077 51%, #db36a4 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #db36a4), color-stop(50%, #c146a1), color-stop(51%, #a80077), color-stop(100%, #db36a4));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #db36a4 0%, #c146a1 50%, #a80077 51%, #db36a4 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #db36a4 0%, #c146a1 50%, #a80077 51%, #db36a4 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #db36a4 0%, #c146a1 50%, #a80077 51%, #db36a4 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #db36a4 0%, #c146a1 50%, #a80077 51%, #db36a4 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$btnConfirmGradStartColorAct', endColorstr='$btnConfirmGradStartColorAct',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 61, ../sass/client.scss */
+.confirm-button {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  background-color: #b0e0e6;
+  left: middle;
+  position: relative;
+  top: 40%;
+  background-color: #666;
+  border-radius: 10px;
+  width: 80%;
+  cursor: pointer;
+  border: 2px solid #eee;
+  text-align: center;
+  font-size: 2em;
+  background: #b7deed;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #b7deed 0%, #71ceef 50%, #21b4e2 51%, #b7deed 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b7deed), color-stop(50%, #71ceef), color-stop(51%, #21b4e2), color-stop(100%, #b7deed));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #b7deed 0%, #71ceef 50%, #21b4e2 51%, #b7deed 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #b7deed 0%, #71ceef 50%, #21b4e2 51%, #b7deed 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #b7deed 0%, #71ceef 50%, #21b4e2 51%, #b7deed 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #b7deed 0%, #71ceef 50%, #21b4e2 51%, #b7deed 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$btnConfirmGradStartColor', endColorstr='$btnConfirmGradStartColor',GradientType=0 );
+  /* IE6-9 */
+}
+
+/* line 95, ../sass/client.scss */
+.loading {
+  width: 50%;
+  text-align: center;
+  margin: auto 40px;
+  background-color: #884444;
+  display: none;
+}
+
+/* line 102, ../sass/client.scss */
+.cursor {
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+  border-radius: 10px;
+  background-color: red;
+  display: none;
+  position: absolute;
+}
+
+/* line 112, ../sass/client.scss */
+.cursor.act {
+  display: block;
+}
+
+/* line 115, ../sass/client.scss */
+.pane.pane-ctrl {
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color: #000;
+}

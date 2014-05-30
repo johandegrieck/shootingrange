@@ -1,0 +1,121 @@
+$btnConfirmGradStartColor:#b7deed;
+$btnConfirmGradSeperationColor:#71ceef;
+$btnConfirmGradSperation2Color:#21b4e2;
+
+$btnConfirmGradStartColorAct:#db36a4;
+$btnConfirmGradSeperationColorAct:#c146a1;
+$btnConfirmGradSperation2ColorAct:#a80077;
+
+body{
+	font-family:Verdana;
+	overflow: hidden;	
+}
+.form.form-nick,.form.form-initserver{
+	border: 2px solid #CCC;
+	background-color: #EFEFEF;
+}
+
+
+
+.pane.pane-ctrl{
+	width:100%;
+	height:100%;
+	display:none;
+	background-color:#000;
+	display:none;
+}
+.pane.pane-ctrl.act{
+	display:block;
+}
+
+.errNickname{
+	color:red;
+	background-color:#66FFFF;
+	border: solid 1px #ff0000;
+}
+.container-confirm-buttom{
+  background-color: black;
+  height: 100%;
+  display:none;
+}
+.container-confirm-buttom.clicked .confirm-button{
+
+	background: $btnConfirmGradStartColorAct;
+	/* Old browsers */
+	background: -moz-linear-gradient(top, $btnConfirmGradStartColorAct 0%, $btnConfirmGradSeperationColorAct 50%, $btnConfirmGradSperation2ColorAct 51%, $btnConfirmGradStartColorAct 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $btnConfirmGradStartColorAct), color-stop(50%, $btnConfirmGradSeperationColorAct), color-stop(51%, $btnConfirmGradSperation2ColorAct), color-stop(100%, $btnConfirmGradStartColorAct));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, $btnConfirmGradStartColorAct 0%, $btnConfirmGradSeperationColorAct 50%, $btnConfirmGradSperation2ColorAct 51%, $btnConfirmGradStartColorAct 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, $btnConfirmGradStartColorAct 0%, $btnConfirmGradSeperationColorAct 50%, $btnConfirmGradSperation2ColorAct 51%, $btnConfirmGradStartColorAct 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, $btnConfirmGradStartColorAct 0%, $btnConfirmGradSeperationColorAct 50%, $btnConfirmGradSperation2ColorAct 51%, $btnConfirmGradStartColorAct 100%);
+	/* IE10+ */
+	background: linear-gradient(to bottom, $btnConfirmGradStartColorAct 0%, $btnConfirmGradSeperationColorAct 50%, $btnConfirmGradSperation2ColorAct 51%, $btnConfirmGradStartColorAct 100%);
+	/* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$btnConfirmGradStartColorAct', endColorstr='$btnConfirmGradStartColorAct',GradientType=0 );
+	/* IE6-9 */
+
+}
+.confirm-button{
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+	background-color:#b0e0e6;
+	left: middle;
+	position: relative;
+	top: 40%;
+	background-color: #666;
+	border-radius: 10px;
+	width: 80%;
+	cursor: pointer;
+	border: 2px solid #eee;
+	text-align: center;
+	font-size: 2em;
+	background: $btnConfirmGradStartColor;
+	/* Old browsers */
+	background: -moz-linear-gradient(top, $btnConfirmGradStartColor 0%, $btnConfirmGradSeperationColor 50%, $btnConfirmGradSperation2Color 51%, $btnConfirmGradStartColor 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $btnConfirmGradStartColor), color-stop(50%, $btnConfirmGradSeperationColor), color-stop(51%, $btnConfirmGradSperation2Color), color-stop(100%, $btnConfirmGradStartColor));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, $btnConfirmGradStartColor 0%, $btnConfirmGradSeperationColor 50%, $btnConfirmGradSperation2Color 51%, $btnConfirmGradStartColor 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, $btnConfirmGradStartColor 0%, $btnConfirmGradSeperationColor 50%, $btnConfirmGradSperation2Color 51%, $btnConfirmGradStartColor 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, $btnConfirmGradStartColor 0%, $btnConfirmGradSeperationColor 50%, $btnConfirmGradSperation2Color 51%, $btnConfirmGradStartColor 100%);
+	/* IE10+ */
+	background: linear-gradient(to bottom, $btnConfirmGradStartColor 0%, $btnConfirmGradSeperationColor 50%, $btnConfirmGradSperation2Color 51%, $btnConfirmGradStartColor 100%);
+	/* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$btnConfirmGradStartColor', endColorstr='$btnConfirmGradStartColor',GradientType=0 );
+	/* IE6-9 */
+
+
+}
+.loading{
+	width:50%;
+	text-align: center;
+	margin: auto 40px;
+	background-color:#884444;
+	display:none;
+}
+.cursor{
+  width:20px;
+  height:20px;
+  margin-left:-10px;
+  margin-top:-10px;
+  border-radius: 10px;
+  background-color:red;
+  display:none;
+  position:absolute;
+}
+.cursor.act{
+	display:block;
+}
+.pane.pane-ctrl{
+	width:100%;
+	
+	height:100%;
+	display:none;
+	background-color:#000;
+}
