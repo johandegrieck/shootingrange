@@ -8,13 +8,14 @@ var express = require('express'),
 	players=[],
 	playerColors = ["player-color-1","player-color-2","player-color-3","player-color-4"],
 	playerCounter = 0;
-
-server.listen(8000);
-
+	
 /*SPECIFIC CONFIG FOR OPENSHIFT*/
 app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);  
 app.set('ipaddr', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1"); 
 /*END OPENSHIFT SPECIFIC CODE */
+
+server.listen(3000);
+
 
 app.get('/', function(req,res){
 	res.sendfile(__dirname + '/index.html');
