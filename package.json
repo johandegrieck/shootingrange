@@ -6,4 +6,8 @@
 		"socket.io":"0.9.16",
 		"express":"3.4.8"
 	}
+	,
+	"scripts": {
+	    "start": "node app.js"
+  	}
 }
