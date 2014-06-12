@@ -1,7 +1,7 @@
 jQuery(function($){
 	/*var socket = io.connect();*/
 	/* openshift config */
-	var socket = io.connect("http://shootingrange-shootingrange.rhcloud.com:8000");
+	var socket = io.connect("ws://shootingrange-shootingrange.rhcloud.com:8000/");
 	
 	var $body = $('body');
 	var $nameEntry = $('#name-entry');
